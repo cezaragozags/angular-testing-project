@@ -1,1 +1,18 @@
-<p>task-list works!</p>
+
+<div class="row row-cols-1 row-cols-md-6 g-4">
+  @for (task of tasks; track task) {
+   <app-task-item [task]="task" (edit)="updateTask($event)" (delete)="deleteTask($event)" ></app-task-item>
+  }
+</div>
+
+<form class="row g-3">
+
+  <div class="col-auto">
+    <input name="newTask" [(ngModel)]="newTask" type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <button (click)="addTask(newTask)" type="submit" class="btn btn-primary mb-3">Agregar</button>
+  </div>
+  <div class="col-auto">
+    <input name="editTask" [(ngModel)]="editTask" type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <button type="submit" class="btn btn-primary mb-3" (click)="saveEditedTask()" >Actualizar</button>
+  </div>
+</form>
